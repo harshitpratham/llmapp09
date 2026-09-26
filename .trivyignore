@@ -1,6 +1,12 @@
 # glibc: Integer overflow in memalign leads to heap corruption
 # No fix available upstream (status: affected) - suppress until Debian publishes a patch
 CVE-2026-0861
+# util-linux on Debian 13: no fixed package in the current slim image
+CVE-2026-16742
+CVE-2026-76642
+CVE-2026-78408
+CVE-2026-78409
+CVE-2026-78410
 CVE-2025-62727
 CVE-2026-53615
 CVE-2026-41992
