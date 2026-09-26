@@ -1,9 +1,6 @@
+venv/
 __pycache__/
 *.pyc
-.venv/
-logs/
-traces/
-node_modules/
 .env
+node_modules/
 .deepeval/
-promptfoo-results/
