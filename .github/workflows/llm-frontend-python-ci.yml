@@ -1,0 +1,24 @@
+name: llm-frontend-python
+on:
+  push:
+    paths:
+      - "llm-frontend-python/**"
+      - ".github/workflows/llm-frontend-python-ci.yml"
+jobs:
+  build-scan-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t harshitagarwal/llm-frontend-python:1.0.0 ./llm-frontend-python
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: harshitagarwal/llm-frontend-python:1.0.0
+          severity: HIGH,CRITICAL
+          exit-code: "0"
+      - name: Push image
+        if: ${{ secrets.DOCKERHUB_TOKEN != '' }}
+        run: |
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "harshitagarwal" --password-stdin
+          docker push harshitagarwal/llm-frontend-python:1.0.0

@@ -1,0 +1,15 @@
+services:
+  llm-python:
+    build: ./llm-multiroute
+    ports:
+      - "8090:8080"
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+  llm-frontend-python:
+    build: ./llm-frontend-python
+    ports:
+      - "5050:5000"
+    environment:
+      API_URL: http://llm-python:8080/api/chat
+    depends_on:
+      - llm-python

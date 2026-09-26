@@ -1,0 +1,10 @@
+{
+  "name": "promptfoo-tests",
+  "private": true,
+  "scripts": {
+    "eval": "promptfoo eval --no-cache"
+  },
+  "dependencies": {
+    "promptfoo": "0.118.3"
+  }
+}
